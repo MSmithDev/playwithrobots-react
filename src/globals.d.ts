@@ -1,0 +1,2 @@
+
+module 'react-twitch-embed'

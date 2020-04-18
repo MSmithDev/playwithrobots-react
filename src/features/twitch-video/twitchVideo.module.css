@@ -1,0 +1,16 @@
+.container {
+    width:100%;
+    height: 500px;
+    display: flex;
+}
+
+.streamContainer {
+    width: 70%;
+    height: 100%;
+}
+
+.readoutContainer {
+    width: 30%;
+    height: 100%;
+    left: 0px;
+}

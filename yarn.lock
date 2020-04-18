@@ -963,6 +963,13 @@
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-10.1.0.tgz#f0950bba18819512d42f7197e56c518aa491cf18"
   integrity sha512-ij4wRiunFfaJxjB0BdrYHIH8FxBJpOwNPhhAcunlmPdXudL1WQV1qoP9un6JsEBAgQH+7UXyyjh0g7jTxXK6tg==
 
+"@giantmachines/redux-websocket@^1.1.7":
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/@giantmachines/redux-websocket/-/redux-websocket-1.1.7.tgz#8c045a359cd3f9a73ef141ce722fd14ae754cd1b"
+  integrity sha512-t90k+NcVInXvppMVpU3c7ZC6i58S/jBPqltckAlKfrtc92YmGZ/He3qYT9OiemlvS+/d+R6P/Ed4yEqKVevYdg==
+  dependencies:
+    redux "~4"
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -8579,6 +8586,11 @@ react-scripts@3.4.1:
   optionalDependencies:
     fsevents "2.1.2"
 
+react-twitch-embed@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/react-twitch-embed/-/react-twitch-embed-1.2.3.tgz#a8cbaaa9562c44ccc7278db44f1c4e24b73957a2"
+  integrity sha512-y1zFmeVsKYHjAxfuCk6Zboh7yHSgDZlakyQD4JdrxoFPTv9L+D6M0i1YiEYE1MTWqM6OzliFkM+0agcbROLKXA==
+
 react@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
@@ -8687,7 +8699,7 @@ redux-thunk@^2.3.0:
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
   integrity sha512-km6dclyFnmcvxhAcrQV2AkZmPQjzPDjgVlQtR0EQjxZPyJ0BnMf3in1ryuR8A2qU0HldVRfxYXbFSKlI3N7Slw==
 
-redux@^4.0.0:
+redux@^4.0.0, redux@~4:
   version "4.0.5"
   resolved "https://registry.yarnpkg.com/redux/-/redux-4.0.5.tgz#4db5de5816e17891de8a80c424232d06f051d93f"
   integrity sha512-VSz1uMAH24DM6MF72vcojpYPtrTUu3ByVWfPL1nPfVRb5mZVTve5GnNCUV53QM/BZ66xfWrm0CTWoM+Xlz8V1w==

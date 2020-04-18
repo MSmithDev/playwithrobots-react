@@ -1,0 +1,48 @@
+.container {
+    display:flex;
+    height: 50px;
+    width: 100%;
+    background-color: gray;
+}
+
+.logoContainer {
+    width:20%;
+    height:100%;
+    background-color: aqua;
+    font-size: 0.9em;
+}
+
+.statusContainer {
+    width:30%;
+    height:100%;
+    background-color: orange;
+}
+
+.statsContainer {
+    width:30%;
+    height:100%;
+    background-color: aquamarine;
+}
+.loginContainer {
+    width:20%;
+    height:100%;
+}
+
+.loginBtn {
+    background-color: rgb(128, 2, 245); /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    height:100%;
+    opacity: 0.7;
+    width: 100%;
+}
+
+.loginBtn:hover {
+    opacity: 1;
+
+}
