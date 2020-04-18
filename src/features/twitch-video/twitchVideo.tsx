@@ -9,7 +9,7 @@ import { connect } from '@giantmachines/redux-websocket';
 export function TwitchVideo() {
    
   const dispatch = useDispatch();
-  dispatch(connect('ws://127.0.0.1:8888'));
+  dispatch(connect('ws://dev.msmithdev.com:2064'));
       
   return (
     <div className={styles.container}>
