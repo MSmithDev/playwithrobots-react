@@ -16,13 +16,13 @@ export function VerticalReadout() {
                 <SquareReadout axis = {"X"} value={positions.Position.XYZR.X.toString()}/>
                 </div>
                 <div className={styles.gridcontentitem}>
-                <SquareReadout axis = {"Y"} value={"10.0"}/>
+                <SquareReadout axis = {"Y"} value={positions.Position.XYZR.Y.toString()}/>
                 </div>
                 <div className={styles.gridcontentitem}>
-                <SquareReadout axis = {"Z"} value={"10.0"}/>
+                <SquareReadout axis = {"Z"} value={positions.Position.XYZR.Z.toString()}/>
                 </div>
                 <div className={styles.gridcontentitem}>
-                <SquareReadout axis = {"R"} value={"10.0"}/>
+                <SquareReadout axis = {"R"} value={positions.Position.XYZR.R.toString()}/>
                 </div>
             </div>
             <div className={styles.gridcontent}>
