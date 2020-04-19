@@ -9,8 +9,6 @@ const reduxWebsocketMiddleware = reduxWebsocket({
   reconnectOnClose: true
 });
 
-//const enhancer = applyMiddleware(reduxWebsocketMiddleware)
-
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
