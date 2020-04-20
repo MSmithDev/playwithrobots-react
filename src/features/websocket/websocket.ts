@@ -45,6 +45,11 @@ const onMessage = createAction('REDUX_WEBSOCKET::MESSAGE');
 export const testReducer = createReducer(initialState, {
     [onMessage.type]: (state, action) => {
         const robotObj = JSON.parse(action.payload.message);
+
+        switch(robotObj.type) {
+
+            case "robotPosition": {
+
         state.Position.XYZR.X = robotObj.robotPosition.x;
         state.Position.XYZR.Y = robotObj.robotPosition.y;
         state.Position.XYZR.Z = robotObj.robotPosition.z;
@@ -54,6 +59,21 @@ export const testReducer = createReducer(initialState, {
         state.Position.Joint.J2 = robotObj.robotPosition.j2;
         state.Position.Joint.J3 = robotObj.robotPosition.j3;
         state.Position.Joint.J4 = robotObj.robotPosition.j4;
+                break;
+            }
+            case "toolState": {
+                console.log(robotObj);
+                break;
+            }
+            case "ioState": {
+                console.log(robotObj);
+                break;
+            }
+
+
+        }
+        
+        
     }
 })
 

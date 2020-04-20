@@ -17,6 +17,12 @@
   color: rgb(112, 76, 182);
 }
 
+.chat {
+  display: flex;
+  height: 400px;
+}
+
+
 @keyframes App-logo-float {
   0% {
     transform: translateY(0);
