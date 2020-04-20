@@ -71,6 +71,7 @@ export const testReducer = createReducer(initialState, {
             }
             case "robotState": {
                 console.log(robotObj);
+                store.dispatch(updateRobotState(robotObj))
                 break;
             }
 
@@ -82,11 +83,6 @@ export const testReducer = createReducer(initialState, {
 })
 
 export const selectPosition = (state: RootState) => state.message;
-
-// The function below is called a selector and allows us to select a value from
-// the state. Selectors can also be defined inline where they're used instead of
-// in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
-//export const selectJointPositions = (state: RootState) => state.websocket.value;
 
 interface userState {
     loggedIn: boolean
@@ -114,4 +110,36 @@ const initialUserState: userState = {
 
   export const selectUser = (state: RootState) => state.user;
 
+
+  interface robotState {
+    connected: boolean
+    estop: boolean
+    high_power: boolean
+    executing: boolean
+    max_speed: number
+}
+
+
+const initialRobotState: robotState = {
+    connected: false,
+    estop: true,
+    high_power: false,
+    executing: false,
+    max_speed: 0
+
+  };
+
+  export const updateRobotState = createAction('UPDATE::ROBOTSTATE', function prepare(state) {
+    return {
+      payload: {
+        state
+      }
+    }
+  })
+
+export const robotStateReducer = createReducer(initialRobotState, {
+    [updateRobotState.type]: (state, action) => {
+        state = action.payload.state
+    }
+})
 

@@ -1,8 +1,7 @@
 import { applyMiddleware } from 'redux';
 import { configureStore, ThunkAction, Action, getDefaultMiddleware } from '@reduxjs/toolkit';
-import {  testReducer, userReducer } from '../features/websocket/websocket';
 import reduxWebsocket from '@giantmachines/redux-websocket';
-
+import {  testReducer, userReducer, robotStateReducer } from '../features/websocket/websocket';
 
 const reduxWebsocketMiddleware = reduxWebsocket({
   reconnectOnClose: true
@@ -10,8 +9,10 @@ const reduxWebsocketMiddleware = reduxWebsocket({
 
 export const store = configureStore({
   reducer: {
+    robotstate: robotStateReducer,
     message: testReducer,
     user: userReducer
+    
   },
   middleware: [reduxWebsocketMiddleware, ...getDefaultMiddleware({
     serializableCheck: { ignoredActionPaths: ['meta.arg','meta.timestamp','payload.event']}
