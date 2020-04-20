@@ -2,15 +2,21 @@ import React from 'react';
 import styles from './VerticalReadout.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { SquareReadout } from '../squareReadout/squareReadout';
-import { selectPosition } from '../../websocket/websocket';
+import { selectPosition, selectUser } from '../../websocket/websocket';
 
 export function VerticalReadout() {
 
     const positions = useSelector(selectPosition);
+    const user = useSelector(selectUser);
+
+    const overlayStyle ={
+        display: user.loggedIn ? "none":"block"
+    }
 
     return (
 
         <div className={styles.container}>
+            <div className={styles.overlay} style={overlayStyle}>Login to view realtime data</div>
             <div className={styles.gridcontent}>
                 <div className={styles.gridcontentitem}>
                 <SquareReadout axis = {"X"} value={positions.Position.XYZR.X.toString()}/>
