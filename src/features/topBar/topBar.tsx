@@ -1,56 +1,42 @@
-import React, { Component } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import styles from './topBar.module.css';
-import { selectUser, updateUser, selectRobotState} from '../websocket/websocket';
-import { store } from '../../app/store';
+import React, { Component } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import styles from "./topBar.module.css";
+import {
+  selectUser,
+  updateUser,
+  selectRobotState,
+} from "../websocket/websocket";
+import { store } from "../../app/store";
 
 export function TopBar() {
-    function onClick(){
-        window.location.href="https://id.twitch.tv/oauth2/authorize?response_type=code&client_id=mb8hd3bpd9kuybk2gpvlcz6jw4ebyn&redirect_uri=https%3A%2F%2Fpwr.mclarkdev.com%2Fauth/&scope=user_read";
-        console.log("login button pressed");
-    }
-   
-    const user = useSelector(selectUser);
-    const robot = useSelector(selectRobotState);
+  function onClick() {
+    window.location.href =
+      "https://id.twitch.tv/oauth2/authorize?response_type=code&client_id=mb8hd3bpd9kuybk2gpvlcz6jw4ebyn&redirect_uri=https%3A%2F%2Fpwr.mclarkdev.com%2Fauth/&scope=user_read";
+    console.log("login button pressed");
+  }
 
-    fetch('https://pwr.mclarkdev.com/session/', {
-        credentials: 'include'
-    })
-  .then(response => response.json())
-  .then((jsonData) => {
-    // jsonData is parsed json object received from url
-    console.log(jsonData.loggedIn)
-    store.dispatch(updateUser(jsonData.loggedIn))
-  })
-  .catch((error) => {
-    // handle your errors here
-    console.error(error)
-  })
+  const user = useSelector(selectUser);
+  const robot = useSelector(selectRobotState);
 
+  return (
+    <div className={styles.container}>
+      <div className={styles.logoContainer}>
+        <span>Play with robots!</span>
+      </div>
 
+      <div className={styles.statusContainer}>
+        <span>Robot status: {robot.connected ? "Online" : "Offline"}</span>
+      </div>
 
+      <div className={styles.statsContainer}>
+        <span>Logged in: {user.loggedIn.toString()}</span>
+      </div>
 
-    return (
-
-        <div className={styles.container}>
-            <div className={styles.logoContainer}>
-                <span>Play with robots!</span>
-            </div>
-
-            <div className={styles.statusContainer}>
-    <span>Robot status: {robot.connected ? "Online":"Offline"}</span>
-            </div>
-
-            <div className={styles.statsContainer}>
-    <span>Logged in: {user.loggedIn.toString()}</span>
-            </div>
-
-            <div className={styles.loginContainer}>
-                <button className={styles.loginBtn} type="button" onClick={onClick}>Login to Twitch</button>
-            </div>
-
-        </div>
-
-
-    );
+      <div className={styles.loginContainer}>
+        <button className={styles.loginBtn} type="button" onClick={onClick}>
+          Login to Twitch
+        </button>
+      </div>
+    </div>
+  );
 }

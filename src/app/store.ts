@@ -1,22 +1,38 @@
-import { applyMiddleware } from 'redux';
-import { configureStore, ThunkAction, Action, getDefaultMiddleware } from '@reduxjs/toolkit';
-import reduxWebsocket from '@giantmachines/redux-websocket';
-import {  testReducer, userReducer, robotStateReducer } from '../features/websocket/websocket';
+import {
+  configureStore,
+  ThunkAction,
+  Action,
+  getDefaultMiddleware,
+} from "@reduxjs/toolkit";
+import reduxWebsocket from "@giantmachines/redux-websocket";
+import {
+  testReducer,
+  userReducer,
+  robotStateReducer,
+  toolStateReducer,
+} from "../features/websocket/websocket";
+import wsmiddle from "../features/websocket/websocketMiddleware";
 
 const reduxWebsocketMiddleware = reduxWebsocket({
-  reconnectOnClose: true
+  reconnectOnClose: true,
 });
 
 export const store = configureStore({
   reducer: {
     robotstate: robotStateReducer,
-    message: testReducer,
-    user: userReducer
-    
+    toolstate: toolStateReducer,
+    robotposition: testReducer,
+    user: userReducer,
   },
-  middleware: [reduxWebsocketMiddleware, ...getDefaultMiddleware({
-    serializableCheck: { ignoredActionPaths: ['meta.arg','meta.timestamp','payload.event']}
-  })],
+  middleware: [
+    reduxWebsocketMiddleware,
+    wsmiddle,
+    ...getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActionPaths: ["meta.arg", "meta.timestamp", "payload.event"],
+      },
+    }),
+  ],
 });
 
 export type RootState = ReturnType<typeof store.getState>;

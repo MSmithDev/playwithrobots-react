@@ -1,18 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { TwitchVideo } from './features/twitch-video/twitchVideo';
 import { TwitchChat } from 'react-twitch-embed';
 import { TopBar } from './features/topBar/topBar';
-import { connect } from '@giantmachines/redux-websocket';
-import { useDispatch } from 'react-redux';
 import { VotePanelContainer } from './features/robotComponents/votePanel/votePanelContainer';
-import styles from './App.css';
+import { store } from './app/store';
+import { updateUser } from './features/websocket/websocket';
 
 
 
 
 function App() {
+  fetch('https://pwr.mclarkdev.com/session/', {
+        credentials: 'include'
+    })
+  .then(response => response.json())
+  .then((jsonData) => {
+    // jsonData is parsed json object received from url
+    console.log("logged in?: " + jsonData.loggedIn)
+    console.log("ran fetch from app.tsx");
+    store.dispatch(updateUser(jsonData.loggedIn))
+  })
+  .catch((error) => {
+    // handle your errors here
+    console.error(error)
+  })
   
   return (
     <div className="App">
