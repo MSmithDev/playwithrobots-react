@@ -69,6 +69,10 @@ export const testReducer = createReducer(initialState, {
                 console.log(robotObj);
                 break;
             }
+            case "robotState": {
+                console.log(robotObj);
+                break;
+            }
 
 
         }
@@ -109,4 +113,5 @@ const initialUserState: userState = {
   })
 
   export const selectUser = (state: RootState) => state.user;
+
 
