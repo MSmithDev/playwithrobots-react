@@ -12,7 +12,9 @@ export function TopBar() {
    
     const user = useSelector(selectUser);
 
-    fetch('https://pwr.mclarkdev.com/session/')
+    fetch('https://pwr.mclarkdev.com/session/', {
+        credentials: 'include'
+    })
   .then(response => response.json())
   .then((jsonData) => {
     // jsonData is parsed json object received from url
