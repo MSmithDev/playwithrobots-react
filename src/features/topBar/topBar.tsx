@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './topBar.module.css';
-import { selectUser, updateUser} from '../websocket/websocket';
+import { selectUser, updateUser, selectRobotState} from '../websocket/websocket';
 import { store } from '../../app/store';
 
 export function TopBar() {
@@ -11,6 +11,7 @@ export function TopBar() {
     }
    
     const user = useSelector(selectUser);
+    const robot = useSelector(selectRobotState);
 
     fetch('https://pwr.mclarkdev.com/session/', {
         credentials: 'include'
@@ -37,7 +38,7 @@ export function TopBar() {
             </div>
 
             <div className={styles.statusContainer}>
-                <span>Robot status: </span> <span>Offline</span>
+    <span>Robot status: {robot.connected ? "Online":"Offline"}</span>
             </div>
 
             <div className={styles.statsContainer}>

@@ -61,25 +61,13 @@ export const testReducer = createReducer(initialState, {
         state.Position.Joint.J4 = robotObj.robotPosition.j4;
                 break;
             }
-            case "toolState": {
-                console.log(robotObj);
-                break;
-            }
+            
             case "ioState": {
                 console.log(robotObj);
                 
                 break;
             }
-            case "robotState": {
-                console.log(robotObj);
-                //state.robotState.connected = robotObj.robotState.connected;
-                break;
-            }
-
-
         }
-        
-        
     }
 })
 
@@ -112,12 +100,18 @@ const initialUserState: userState = {
   export const selectUser = (state: RootState) => state.user;
 
 
+  interface robotTools {
+    tool1: boolean
+    tool2: boolean
+    selectedTool: string
+  }
   interface robotState {
     connected: boolean
     estop: boolean
     high_power: boolean
     executing: boolean
     max_speed: number
+    tool: robotTools
 }
 
 
@@ -126,21 +120,37 @@ const initialRobotState: robotState = {
     estop: true,
     high_power: false,
     executing: false,
-    max_speed: 0
-
+    max_speed: 0,
+    tool: {
+      tool1: false,
+      tool2: false,
+      selectedTool: "a"
+    }
   };
 
-  export const updateRobotState = createAction('UPDATE::ROBOTSTATE', function prepare(state) {
-    return {
-      payload: {
-        state
-      }
-    }
-  })
-
 export const robotStateReducer = createReducer(initialRobotState, {
-    [updateRobotState.type]: (state, action) => {
-        state = action.payload.state
+  [onMessage.type]: (state, action) => {
+    const robotObj = JSON.parse(action.payload.message);
+
+    switch(robotObj.type) {
+      case "robotState": {
+        state.connected = robotObj.robotState.connected;
+        state.estop = robotObj.robotState.estop;
+        state.executing = robotObj.robotState.executing;
+        state.high_power = robotObj.robotState.high_power;
+        state.max_speed = robotObj.robotState.max_speed;
+        break;
+      }
+
+      case "toolState": {
+        console.log(robotObj);
+        state.tool.tool1 = robotObj.toolState.a
+        state.tool.tool2 = robotObj.toolState.b
+        state.tool.selectedTool = robotObj.toolState.selected
+        break;
     }
+    }
+  }
 })
 
+export const selectRobotState = (state: RootState) => state.robotstate;
