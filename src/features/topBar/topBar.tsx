@@ -4,7 +4,7 @@ import styles from './topBar.module.css';
 export function TopBar() {
     function onClick(){
         window.location.href="https://id.twitch.tv/oauth2/authorize?response_type=code&client_id=mb8hd3bpd9kuybk2gpvlcz6jw4ebyn&redirect_uri=https%3A%2F%2Fmanage.mclarkdev.com%2Fpwr%2Fauth/&scope=user_read";
-        
+        console.log("login button pressed");
     }
     return (
 
