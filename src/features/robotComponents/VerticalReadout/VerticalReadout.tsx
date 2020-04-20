@@ -27,16 +27,16 @@ export function VerticalReadout() {
             </div>
             <div className={styles.gridcontent}>
                 <div className={styles.gridcontentitem}>
-                <SquareReadout axis = {"J1"} value={"10.0°"}/>
+                <SquareReadout axis = {"J1"} value={positions.Position.Joint.J1.toString() + "°"}/>
                 </div>
                 <div className={styles.gridcontentitem}>
-                <SquareReadout axis = {"J2"} value={"20.0°"}/>
+                <SquareReadout axis = {"J2"} value={positions.Position.Joint.J2.toString() + "°"}/>
                 </div>
                 <div className={styles.gridcontentitem}>
-                <SquareReadout axis = {"J3"} value={"30.0°"}/>
+                <SquareReadout axis = {"J3"} value={positions.Position.Joint.J3.toString() + "°"}/>
                 </div>
                 <div className={styles.gridcontentitem}>
-                <SquareReadout axis = {"J4"} value={"40.0°"}/>
+                <SquareReadout axis = {"J4"} value={positions.Position.Joint.J4.toString() + "°"}/>
                 </div>
             </div>
               
