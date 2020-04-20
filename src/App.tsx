@@ -1,6 +1,5 @@
 import React from 'react';
 import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
 import './App.css';
 import { TwitchVideo } from './features/twitch-video/twitchVideo';
 import { TwitchChat } from 'react-twitch-embed';

@@ -1,7 +1,6 @@
 import { applyMiddleware } from 'redux';
 import { configureStore, ThunkAction, Action, getDefaultMiddleware } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
-import {  testReducer } from '../features/websocket/websocket';
+import {  testReducer, userReducer } from '../features/websocket/websocket';
 import reduxWebsocket from '@giantmachines/redux-websocket';
 
 
@@ -11,8 +10,8 @@ const reduxWebsocketMiddleware = reduxWebsocket({
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
-    message: testReducer
+    message: testReducer,
+    user: userReducer
   },
   middleware: [reduxWebsocketMiddleware, ...getDefaultMiddleware({
     serializableCheck: { ignoredActionPaths: ['meta.arg','meta.timestamp','payload.event']}

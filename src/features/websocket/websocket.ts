@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, createAction, createReducer } from '@reduxjs/toolkit';
-import { AppThunk, RootState } from '../../app/store';
+import { AppThunk, RootState, store } from '../../app/store';
 import { act } from 'react-dom/test-utils';
 
 interface XYZR {
@@ -63,3 +63,30 @@ export const selectPosition = (state: RootState) => state.message;
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
 //export const selectJointPositions = (state: RootState) => state.websocket.value;
+
+interface userState {
+    loggedIn: boolean
+}
+
+const initialUserState: userState = {
+    loggedIn: false
+  };
+
+
+  export const updateUser = createAction('UPDATE::USER', function prepare(loggedIn) {
+    return {
+      payload: {
+        loggedIn
+      }
+    }
+  })
+  
+  export const userReducer = createReducer(initialUserState, {
+      [updateUser.type]: (state, action) => {
+          state.loggedIn = action.payload.loggedIn;
+      }
+
+  })
+
+  export const selectUser = (state: RootState) => state.user;
+
