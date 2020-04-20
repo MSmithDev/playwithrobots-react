@@ -61,12 +61,6 @@ export const testReducer = createReducer(initialState, {
         state.Position.Joint.J4 = robotObj.robotPosition.j4;
                 break;
             }
-            
-            case "ioState": {
-                console.log(robotObj);
-                
-                break;
-            }
         }
     }
 })
