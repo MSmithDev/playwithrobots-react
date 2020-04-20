@@ -71,7 +71,7 @@ export const testReducer = createReducer(initialState, {
             }
             case "robotState": {
                 console.log(robotObj);
-                store.dispatch(updateRobotState(robotObj))
+                //store.dispatch(updateRobotState(robotObj))
                 break;
             }
 
