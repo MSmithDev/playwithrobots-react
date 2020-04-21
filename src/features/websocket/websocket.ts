@@ -121,7 +121,6 @@ export const robotStateReducer = createReducer(initialRobotState, {
 
 export const selectRobotState = (state: RootState) => state.robotstate;
 
-/////////////////////////
 interface toolState {
   tool1: boolean;
   tool2: boolean;
