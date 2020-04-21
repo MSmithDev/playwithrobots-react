@@ -12,7 +12,7 @@ import { siteUrl } from './globalVars';
 
 
 function App() {
-  fetch(siteUrl+'/session/', {
+  fetch('https://'+siteUrl+'/session/', {
         credentials: 'include'
     })
   .then(response => response.json())

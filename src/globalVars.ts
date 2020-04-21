@@ -1,1 +1,1 @@
-export const siteUrl = "https://playwithrobots.tv";
+export const siteUrl = "playwithrobots.tv";
