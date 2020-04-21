@@ -6,12 +6,13 @@ import { TopBar } from './features/topBar/topBar';
 import { VotePanelContainer } from './features/robotComponents/votePanel/votePanelContainer';
 import { store } from './app/store';
 import { updateUser } from './features/websocket/websocket';
+import { siteUrl } from './globalVars';
 
 
 
 
 function App() {
-  fetch('https://pwr.mclarkdev.com/session/', {
+  fetch(siteUrl+'/session/', {
         credentials: 'include'
     })
   .then(response => response.json())
