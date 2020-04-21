@@ -18,7 +18,7 @@ export function TwitchVideo() {
 
 <div className={styles.streamContainer}>
       <TwitchPlayer
-        channel="monstercat" 
+        channel="playwithrobots" 
         muted="false"
         width="100%"
         height="100%" 
