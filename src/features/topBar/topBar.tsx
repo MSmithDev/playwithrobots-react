@@ -35,7 +35,7 @@ export function TopBar() {
 
       <div className={styles.loginContainer}>
         <button className={styles.loginBtn} type="button" onClick={onClick}>
-          Login to Twitch
+          {user.loggedIn ? "Hi, " + user.userName : "Login to Twitch"}
         </button>
       </div>
     </div>

@@ -65,25 +65,28 @@ export const selectPosition = (state: RootState) => state.robotposition;
 
 interface userState {
   loggedIn: boolean;
+  userName: string;
 }
 
 const initialUserState: userState = {
   loggedIn: false,
+  userName: "null"
 };
 
 export const updateUser = createAction("UPDATE::USER", function prepare(
-  loggedIn
-) {
-  return {
-    payload: {
-      loggedIn,
-    },
-  };
-});
+    jsonObject
+    ) {
+      return {
+        payload: {
+          jsonObject
+        },
+      };
+    });
 
 export const userReducer = createReducer(initialUserState, {
   [updateUser.type]: (state, action) => {
-    state.loggedIn = action.payload.loggedIn;
+    state.loggedIn = action.payload.jsonObject.loggedIn;
+    state.userName = action.payload.jsonObject.userName;
   },
 });
 

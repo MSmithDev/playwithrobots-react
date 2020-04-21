@@ -20,8 +20,9 @@ function App() {
   .then((jsonData) => {
     // jsonData is parsed json object received from url
     console.log("logged in?: " + jsonData.loggedIn)
+    console.log("User Name : " + jsonData.userName)
     console.log("ran fetch from app.tsx");
-    store.dispatch(updateUser(jsonData.loggedIn))
+    store.dispatch(updateUser(jsonData))
   })
   .catch((error) => {
     // handle your errors here
@@ -35,7 +36,7 @@ function App() {
         <TopBar/>
         <TwitchVideo />
         <div className="chat">
-        <TwitchChat className="chat-embed-boder" channel="monstercat" theme="dark"/>
+        <TwitchChat className="chat-embed-boder" channel="playwithrobots" theme="dark"/>
         <VotePanelContainer/>
         </div>
         
