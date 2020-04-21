@@ -4,12 +4,13 @@ import { TwitchEmbed, TwitchPlayer } from "react-twitch-embed"
 import { VerticalReadout } from '../robotComponents/VerticalReadout/VerticalReadout';
 import { useDispatch } from 'react-redux';
 import { connect } from '@giantmachines/redux-websocket';
+import { siteUrl } from '../../globalVars';
 
 
 export function TwitchVideo() {
    
   const dispatch = useDispatch();
-  dispatch(connect('wss://pwr.mclarkdev.com/game/'));
+  dispatch(connect('wss://'+siteUrl+'/game/'));
       
   return (
     <div className={styles.container}>
