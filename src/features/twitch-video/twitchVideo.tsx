@@ -33,7 +33,6 @@ export function TwitchVideo() {
 
 
 </div>
-
     </div>
    
   );
