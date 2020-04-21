@@ -11,6 +11,7 @@ import { siteUrl } from './globalVars';
 
 
 
+
 function App() {
   fetch('https://'+siteUrl+'/session/', {
         credentials: 'include'
