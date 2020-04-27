@@ -12,7 +12,7 @@ export function VotePanelContainer() {
             <VoteButton name="Move A" value="400|0|0|0|0|180|0"/>
             <VoteButton name="Move B" value="400|0|100|0|0|180|0"/>
             <VoteButton name="Move C" value="400|100|100|0|0|180|0"/>
-            <VoteButton name="Move D" value="400|0|0|100|0|180|0"/>
+            <VoteButton name="Move D" value="400|50|50|-100|0|180|0"/>
 
         </div>
 
