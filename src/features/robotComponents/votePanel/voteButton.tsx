@@ -11,7 +11,7 @@ export function VoteButton({name, value}: Props) {
 
     function onClick(value: String){
         
-        store.dispatch(send({vote: value}));
+        store.dispatch(send(value));
     }
     
 

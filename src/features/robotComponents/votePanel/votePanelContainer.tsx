@@ -9,10 +9,10 @@ export function VotePanelContainer() {
     return (
         <div className={styles.container}>
         
-            <VoteButton name="Move A" value="A"/>
-            <VoteButton name="Move B" value="B"/>
-            <VoteButton name="Move C" value="C"/>
-            <VoteButton name="Move D" value="D"/>
+            <VoteButton name="Move A" value="400|0|0|0|0|180|0"/>
+            <VoteButton name="Move B" value="400|0|100|0|0|180|0"/>
+            <VoteButton name="Move C" value="400|100|100|0|0|180|0"/>
+            <VoteButton name="Move D" value="400|0|0|100|0|180|0"/>
 
         </div>
 
