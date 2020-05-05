@@ -2,7 +2,7 @@
     display: grid;
   }
   
-  .chessboard, .black_square, .white_square {
+  .chessboard, .black_square, .white_square, .black_square_canMove {
     display:block;
     padding:0px;
     margin:0px;
@@ -14,7 +14,7 @@
     border:4px solid #FF0000;
   }
   
-  .black_square, .white_square {
+  .black_square, .white_square, .black_square_canMove {
     width:48px;
     height:48px;
     float:left;
@@ -22,6 +22,9 @@
   
   .black_square {
     background-color:#000000;
+  }
+  .black_square_canMove {
+    background-color:#316b01;
   }
   
   .white_square {

@@ -3,6 +3,7 @@ import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import { selectCheckerState, updateSelectedChecker, checkersState, updatePossibleMovesChecker} from '../../websocket/websocket';
 import  styles from './Checkers.module.css';
+import { isPossibleMove } from '../../../Utils';
 
 
 
@@ -17,7 +18,7 @@ export default function CheckersGameBoard() {
         var rowindex = 0;
        BoardState.map(function(row,index){
             
-            test.push(<div>{Row(row, rowindex)}</div>);
+            test.push(<div>{Row(row, rowindex,GameState.possibleMoves)}</div>);
             rowindex ++;
        });
         
@@ -26,51 +27,11 @@ export default function CheckersGameBoard() {
     }
      function handleClick(e:any) {
          var act = e.target.id
-        dispatch(updateSelectedChecker(act));
-          
-        
-        
+        dispatch(updateSelectedChecker(act)); 
         
     }
 
-    function findMoveableSpaces(GameState:checkersState) {
-        console.log("GS: "+GameState.selected);
-        if(GameState.selected !== "") {
-            console.log("running check");
-        var spaces:Array<string> =[""];
-
-        var XYS = GameState.selected.split(":");
-        XYS.shift()
-        var XY = XYS.map(Number);
-        var posMoves:Array<Array<Number>> =[];
-            if(GameState.board[XY[1]+1][XY[0]+1] === 0){
-                console.log("Move Found");
-                posMoves.push([XY[1]+1,XY[0]+1]);
-            }
-            if(GameState.board[XY[1]-1][XY[0]+1] === 0){
-                console.log("Move Found");
-                posMoves.push([XY[1]-1,XY[0]+1]);
-            }
-            if(GameState.board[(XY[1]-1)][(XY[0]-1)] === 0){
-                console.log("Move Found");
-                posMoves.push([XY[1]-1,XY[0]-1]);
-            }
-            if(GameState.board[XY[1]+1][XY[0]-1] === 0){
-                console.log("Move Found");
-                posMoves.push([XY[1]+1,XY[0]-1]);
-            }
-        console.log("pos moves: " ,posMoves)
-        console.log("cur moves: " ,GameState.possibleMoves)
-        if(GameState.possibleMoves.toString() !== posMoves.toString()){
-            dispatch(updatePossibleMovesChecker(posMoves));
-        }
-        
-       
-        
-        
-    }
-}
-    findMoveableSpaces(GameState);
+    
 
     return (
         <div>
@@ -80,11 +41,11 @@ export default function CheckersGameBoard() {
     )
 
 
- function Row(rowArray: Array<number>,rowindex:number){
+ function Row(rowArray: Array<number>,rowindex:number,posMoves:Array<Array<number>>){
 
         var test:any = []
         rowArray.map((data, index) =>{
-        test.push(Cell(data, (index.toString() + ':' +rowindex.toString())))
+        test.push(Cell(data, (index.toString() + ':' +rowindex.toString()),posMoves))
         
         })
         
@@ -94,7 +55,7 @@ export default function CheckersGameBoard() {
 
 }
 
- function Cell(color:number, location:string) {
+ function Cell(color:number, location:string, posMoves:Array<Array<Number>>) {
 
 
 if(color === -1){
@@ -113,7 +74,7 @@ else{
   </svg></div>)
 }
 else {
-    return(<div id={"blank:"+location} onClick={handleClick.bind(this)} className={styles.black_square}></div>)
+    return(<div id={"blank:"+location} onClick={handleClick.bind(this)} className={isPossibleMove(location, GameState.possibleMoves)? styles.black_square_canMove : styles.black_square}></div>)
 }
 }
 }

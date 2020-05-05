@@ -199,6 +199,37 @@ export const updatePossibleMovesChecker = createAction("checkers:updatePossibleM
 export const checkerStateReducer = createReducer(initalCheckersState, {
   [updateSelectedChecker.type]: (state, action) => {
     state.selected = action.payload;
+
+    var XYS = state.selected.split(":");
+        XYS.shift()
+        var XY = XYS.map(Number);
+        var posMoves:Array<Array<number>> =[];
+        try {
+          console.log("dev: Start check");
+            if(state.board[XY[1]+1][XY[0]+1] === 0){
+                console.log("Move Found");
+                posMoves.push([XY[1]+1,XY[0]+1]);
+            }
+            if(state.board[XY[1]-1][XY[0]+1] === 0){
+                console.log("Move Found");
+                posMoves.push([XY[1]-1,XY[0]+1]);
+            }
+            if(state.board[(XY[1]-1)][(XY[0]-1)] === 0){
+                console.log("Move Found");
+                posMoves.push([XY[1]-1,XY[0]-1]);
+            }
+            if(state.board[XY[1]+1][XY[0]-1] === 0){
+                console.log("Move Found");
+                posMoves.push([XY[1]+1,XY[0]-1]);
+            }
+            console.log("dev: Finished check");
+          } catch(e) {
+            
+          }
+
+            state.possibleMoves = posMoves;
+
+
   },
   [updatePossibleMovesChecker.type]: (state, action) => {
     state.possibleMoves = action.payload;
