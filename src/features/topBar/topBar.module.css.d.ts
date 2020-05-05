@@ -5,6 +5,8 @@ declare const styles: {
   readonly "statsContainer": string;
   readonly "loginContainer": string;
   readonly "loginBtn": string;
+  readonly "loginBtnDis": string;
+  readonly "profilePic": string;
 };
 export = styles;
 

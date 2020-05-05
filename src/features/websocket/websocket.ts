@@ -66,11 +66,13 @@ export const selectPosition = (state: RootState) => state.robotposition;
 interface userState {
   loggedIn: boolean;
   userName: string;
+  profilePicture: string;
 }
 
 const initialUserState: userState = {
   loggedIn: false,
-  userName: "null"
+  userName: "null",
+  profilePicture: "null"
 };
 
 export const updateUser = createAction("UPDATE::USER", function prepare(
@@ -87,6 +89,7 @@ export const userReducer = createReducer(initialUserState, {
   [updateUser.type]: (state, action) => {
     state.loggedIn = action.payload.jsonObject.loggedIn;
     state.userName = action.payload.jsonObject.userName;
+    state.profilePicture = action.payload.jsonObject.profilePicture;
   },
 });
 
@@ -143,3 +146,64 @@ export const toolStateReducer = createReducer(initialToolState, {
 });
 
 export const selectToolState = (state: RootState) => state.toolstate;
+
+
+export interface checkersState {
+  board: Array <Array<number>>;
+  activePlayer: number;
+  aiDepthCutoff: number;
+  count: number;
+  popShown: boolean;
+  selected: string;
+  possibleMoves: Array<Array<number>>;
+}
+
+const initalCheckersState: checkersState = {
+  board: [
+    [1,-1,1,-1,1,-1,1,-1],
+    [-1,1,-1,1,-1,1,-1,1],
+    [1,-1,1,-1,1,-1,1,-1],
+    [-1,0,-1,0,-1,0,-1,0],
+    [0,-1,0,-1,0,-1,0,-1],
+    [-1,2,-1,2,-1,2,-1,2],
+    [2,-1,2,-1,2,-1,2,-1],
+    [-1,2,-1,2,-1,2,-1,2]
+  ],
+  activePlayer: 2,
+  aiDepthCutoff: 3,
+  count: 0,
+  popShown: false,
+  selected: "",
+  possibleMoves: []
+}
+
+
+
+export const updateSelectedChecker = createAction("checkers:selected", function prepare(
+  action
+) {
+  return {
+    payload: action
+  }
+}
+);
+export const updatePossibleMovesChecker = createAction("checkers:updatePossibleMoves", function prepare(
+  action
+) {
+  return {
+    payload: action
+  }
+}
+);
+
+export const checkerStateReducer = createReducer(initalCheckersState, {
+  [updateSelectedChecker.type]: (state, action) => {
+    state.selected = action.payload;
+  },
+  [updatePossibleMovesChecker.type]: (state, action) => {
+    state.possibleMoves = action.payload;
+  },
+});
+
+export const selectCheckerState = (state: RootState) => state.checkerState;
+

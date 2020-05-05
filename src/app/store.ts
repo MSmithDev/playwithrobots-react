@@ -10,6 +10,7 @@ import {
   userReducer,
   robotStateReducer,
   toolStateReducer,
+  checkerStateReducer,
 } from "../features/websocket/websocket";
 import wsmiddle from "../features/websocket/websocketMiddleware";
 
@@ -23,6 +24,7 @@ export const store = configureStore({
     toolstate: toolStateReducer,
     robotposition: testReducer,
     user: userReducer,
+    checkerState: checkerStateReducer,
   },
   middleware: [
     reduxWebsocketMiddleware,

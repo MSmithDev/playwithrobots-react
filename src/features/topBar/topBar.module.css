@@ -21,6 +21,7 @@
 .statsContainer {
     width:30%;
     height:100%;
+    font-size: 0.8em;
     background-color: aquamarine;
 }
 .loginContainer {
@@ -41,8 +42,29 @@
     opacity: 0.7;
     width: 100%;
 }
+.loginBtnDis {
+    background-color: rgb(128, 2, 245); /* Green */
+    border: none;
+    color: white;
+
+
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    height:100%;
+    opacity: 0.7;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-end;
+}
 
 .loginBtn:hover {
     opacity: 1;
+}
 
+.profilePic {
+    width: 26px;
+    height: 26px;
+    padding-left: 10px;
+    
 }
